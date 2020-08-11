@@ -17,17 +17,17 @@ function App() {
           <Route
               exact
               path="/"
-              children={<Login/>}>
+              children={<MainPage/>}>
           </Route>
           <Route
               exact
-              path="/registration"
+              path="/register"
               children={<Registration/>}>
           </Route>
           <Route
               exact
-              path="/main"
-              children={<MainPage/>}>
+              path="/login"
+              children={<Login/>}>
           </Route>
           <Route
               exact
