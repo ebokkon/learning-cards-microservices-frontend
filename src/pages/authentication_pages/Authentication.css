@@ -1,71 +1,94 @@
-.login-page {
+.login-page, .registration-page {
     display: flex;
     align-content: center;
     justify-content: center;
     height: 90vh;
 }
 
-.login-container {
+.login-container, .registration-container {
     margin: auto;
     background-color: white;
     height: 60vh;
     width: 25vw;
     border-radius: 8px;
     display: flex;
-    align-content: center;
-    justify-content: center;
+    align-content: space-evenly;
+    justify-content: stretch;
     flex-direction: column;
+    min-width: 400px;
 }
 
-.login-text-container {
-    background-color: red;
+.registration-container {
+    height: 70vh !important;
+}
+
+.login-text-container, .registration-text-container {
+    background-color: #313E4D;
     height: 20%;
     display: flex;
-    align-content: center;
-    justify-content: center;
+    align-content: stretch;
+    justify-content: space-evenly;
     margin-bottom: 10px;
-    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.registration-text-container {
 
 }
 
-.login-title {
+.login-title, .registration-title {
     margin: auto;
+    color: white;
 }
 
-.form-container {
+.form-container, .registration-form-container {
     height: 60%;
     display: flex;
     align-content: center;
     justify-content: center;
 }
 
-.login-form {
+.login-form, .registration-form {
     margin: auto;
     display: flex;
     flex-direction: column;
 }
 
-.login-label {
+.login-label, .registration-label {
     color: red;
     margin-bottom: 10px;
     font-size: 0.9em;
     text-transform: lowercase;
 }
 
-.login-input {
+.registration-label {
+    margin-top: 20px;
+}
+
+.login-input, .registration-input {
     margin-bottom: 10px;
     height: 2em;
     font-size: 1.15em;
     border-width: 0 0 5px 0;
+    border-color: #E6E6E6;
     outline: none;
+
 }
 
-.login-button {
+.login-button, .registration-button {
     margin-top: 30px;
     height: 3em;
     border-radius: 8px;
     outline: none;
     cursor: pointer;
+    background-color: #313E4D;
+    color: white;
+    font-weight: bold;
+}
+
+.login-button:hover, .registration-button:hover {
+    background-color: #29313d;
 }
 
 .registration-link-container {
@@ -77,4 +100,9 @@
 
 .registration-link {
     margin: auto;
+}
+
+::placeholder {
+    font-style: italic;
+    font-size: 0.8em;
 }
