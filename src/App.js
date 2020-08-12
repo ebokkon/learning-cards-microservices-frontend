@@ -31,7 +31,7 @@ function App() {
           </Route>
           <Route
               exact
-              path="/deck"
+              path="/deck/:id"
               children={<DeckDetailPage/>}>
           </Route>
           <Route

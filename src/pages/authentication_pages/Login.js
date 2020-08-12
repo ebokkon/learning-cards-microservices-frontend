@@ -31,7 +31,6 @@ const Login = () => {
                         You are not registered? Click here to sign up!
                     </Link>
                 </div>
-
             </div>
         </div>
 
