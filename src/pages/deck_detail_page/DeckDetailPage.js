@@ -34,8 +34,15 @@ const DeckDetailPage = (props) => {
     event.preventDefault();
     let currentCard = event.target.parentElement.parentElement;
     console.log(currentCard);
-    // TODO: Need to delete by dataset! From DB!
     console.log(currentCard.dataset.id);
+
+    axios
+      .delete(
+        `http://localhost:8762/deck-handler/card/${deckId}/${currentCard.dataset.id}`
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
     currentCard.remove();
   };
 
