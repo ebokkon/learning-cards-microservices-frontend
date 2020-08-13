@@ -1,0 +1,104 @@
+.deck-details-cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+}
+
+.detail-card-element {
+    margin: 20px;
+    height: 350px;
+    width: 300px;
+    background-color: #313E4D;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.card-image-container {
+    margin: auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 150px;
+    width: 100%;
+}
+
+.card-image {
+    margin: auto;
+    height: 120px;
+    width: 120px;
+    border-radius: 8px;
+}
+
+.card-question {
+    background-color: #3e526d;
+    height: 65px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-title-text {
+    text-align: center;
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #E6E6E6;
+    font-size: 0.9em;
+}
+
+.card-question-text {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    color: white;
+}
+
+.card-answer {
+    height: 65px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.show-answer-button {
+    margin: auto;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+    height: 60%;
+    background-color: #3e526d;
+    border-radius: 8px;
+}
+
+.show-answer-text {
+    margin: auto;
+    color: #b9c2b9;
+    font-weight: bold;
+}
+
+.card-answer-text {
+    text-align: center;
+    display: none;
+    color: #50b850;
+    font-weight: bold;
+}
+
+.card-button-container {
+    height: 70px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.card-delete-button {
+    margin: auto;
+    height: 50px;
+    width: 50px;
+}

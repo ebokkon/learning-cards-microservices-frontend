@@ -1,0 +1,41 @@
+.game-page {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.game-container {
+    margin: 50px auto;
+    width: 400px;
+    height: 80vh;
+}
+
+.current-card {
+    height: 70%;
+    background-color: #50b850;
+}
+
+.game-picture-container {
+    height: 60%;
+    display: flex;
+}
+
+.game-image {
+    margin: auto;
+    height: 200px;
+    width: 200px;
+}
+
+.game-question {
+    height: 20%;
+}
+
+.game-answer {
+    height: 20%;
+}
+
+.game-button-container {
+    height: 30%;
+    background-color: red;
+}
