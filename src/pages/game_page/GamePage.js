@@ -16,10 +16,7 @@ const GamePage = () => {
 
   console.log(currentCard);
 
-  const markAsEasy = (event) => {
-    // True
-    let responseAnswer = true;
-    event.preventDefault();
+  const markCard = (event, responseAnswer) => {
     axios
         .post(`http://localhost:8762/game/response/${responseAnswer}`)
         .then(response => {
@@ -35,27 +32,7 @@ const GamePage = () => {
             alert("Empty");
           }
         });
-  };
-
-  const markAsHard = (event) => {
-    let responseAnswer = false;
-    event.preventDefault();
-    axios
-        .post(`http://localhost:8762/game/response/${responseAnswer}`)
-        .then(response => {
-          if (response.data !== "") {
-            let answerContainer = document.querySelector(".game-answer");
-            let buttonSelectContainer = document.querySelector(".game-button-select-container");
-            let showAnswerContainer = document.querySelector(".game-button-container");
-            showAnswerContainer.style.display = "flex";
-            answerContainer.style.display = "none";
-            buttonSelectContainer.style.display = "none";
-            setCurrentCard(response.data);
-          } else {
-            alert("Empty");
-          }
-        });
-  };
+  }
 
   const showAnswer = (event) => {
     event.preventDefault();
@@ -91,10 +68,10 @@ const GamePage = () => {
             <div className="game-show-answer-button">Show answer</div>
           </div>
           <div className="game-button-select-container">
-            <div className="game-positive-button" data-id={currentCard.id} onClick={markAsEasy}>
+            <div className="game-positive-button" data-id={currentCard.id} onClick={(event) => {markCard(event, true)}}>
               <div className="game-positive-button-text" data-id={currentCard.id}>Easy</div>
             </div>
-            <div className="game-negative-button" data-id={currentCard.id} onClick={markAsHard}>
+            <div className="game-negative-button" data-id={currentCard.id} onClick={(event) => {markCard(event, false)}}>
               <div className="game-negative-button-text" data-id={currentCard.id}>Hard</div>
             </div>
           </div>
