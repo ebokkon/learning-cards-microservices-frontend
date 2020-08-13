@@ -23,24 +23,22 @@ const GamePage = () => {
               <img src={"/card_default.png"} alt="Default" className="game-image"/>
             </div>
             <div className="game-question">
-              <p>{currentCard.question}</p>
+              <p className="game-question-text">{currentCard.question}</p>
             </div>
             <div className="game-answer">
-              <p>{currentCard.answer}</p>
+              <p className="game-answer-text">{currentCard.answer}</p>
             </div>
           </div>
           <div className="game-button-container">
-            <div className="game-show-answer-button">
-              <div className="game-show-answer-text">Show answer</div>
-            </div>
-            <div className="game-next-card-buttons">
+            <div className="game-show-answer-button">Show answer</div>
+          </div>
+          <div className="game-button-select-container">
               <div className="game-positive-button">
                 <div className="game-positive-button-text">Easy</div>
               </div>
               <div className="game-negative-button">
                 <div className="game-negative-button-text">Hard</div>
               </div>
-            </div>
           </div>
         </div>
       </div>
