@@ -1,40 +1,60 @@
 import React, {useEffect, useState} from 'react';
 import "./GamePage.css"
+import * as axios from "axios";
 
 const GamePage = () => {
 
-  const [currentCard, setCurrentCard] = useState(
-      {
-        "id": 1,
-        "question": "Budapest",
-        "answer": "Hungary"
-      }
-  );
+  const [currentCard, setCurrentCard] = useState({});
+
+  useEffect(() => {
+    axios.get(`http://localhost:8762/game/play`).then(response => {
+      setCurrentCard(response.data);
+      console.log(response);
+    })
+
+  }, [])
 
   console.log(currentCard);
 
   const markAsEasy = (event) => {
     // True
+    let responseAnswer = true;
     event.preventDefault();
-    console.log(event.target)
-    console.log(event.target.dataset.id)
-    setCurrentCard({
-      "id": 3,
-      "question": "London",
-      "answer": "England"
-    });
+    axios
+        .post(`http://localhost:8762/game/response/${responseAnswer}`)
+        .then(response => {
+          if (response.data !== "") {
+            let answerContainer = document.querySelector(".game-answer");
+            let buttonSelectContainer = document.querySelector(".game-button-select-container");
+            let showAnswerContainer = document.querySelector(".game-button-container");
+            showAnswerContainer.style.display = "flex";
+            answerContainer.style.display = "none";
+            buttonSelectContainer.style.display = "none";
+            setCurrentCard(response.data);
+          } else {
+            alert("Empty");
+          }
+        });
   };
 
   const markAsHard = (event) => {
+    let responseAnswer = false;
     event.preventDefault();
-    console.log(event.target)
-    console.log(event.target.dataset.id)
-    setCurrentCard({
-      "id": 2,
-      "question": "London",
-      "answer": "England"
-    });
-
+    axios
+        .post(`http://localhost:8762/game/response/${responseAnswer}`)
+        .then(response => {
+          if (response.data !== "") {
+            let answerContainer = document.querySelector(".game-answer");
+            let buttonSelectContainer = document.querySelector(".game-button-select-container");
+            let showAnswerContainer = document.querySelector(".game-button-container");
+            showAnswerContainer.style.display = "flex";
+            answerContainer.style.display = "none";
+            buttonSelectContainer.style.display = "none";
+            setCurrentCard(response.data);
+          } else {
+            alert("Empty");
+          }
+        });
   };
 
   const showAnswer = (event) => {
@@ -71,12 +91,12 @@ const GamePage = () => {
             <div className="game-show-answer-button">Show answer</div>
           </div>
           <div className="game-button-select-container">
-              <div className="game-positive-button" data-id={currentCard.id} onClick={markAsEasy}>
-                <div className="game-positive-button-text" data-id={currentCard.id}>Easy</div>
-              </div>
-              <div className="game-negative-button" data-id={currentCard.id} onClick={markAsHard}>
-                <div className="game-negative-button-text" data-id={currentCard.id}>Hard</div>
-              </div>
+            <div className="game-positive-button" data-id={currentCard.id} onClick={markAsEasy}>
+              <div className="game-positive-button-text" data-id={currentCard.id}>Easy</div>
+            </div>
+            <div className="game-negative-button" data-id={currentCard.id} onClick={markAsHard}>
+              <div className="game-negative-button-text" data-id={currentCard.id}>Hard</div>
+            </div>
           </div>
         </div>
       </div>
