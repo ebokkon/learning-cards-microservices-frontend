@@ -29,7 +29,10 @@ const GamePage = () => {
             buttonSelectContainer.style.display = "none";
             setCurrentCard(response.data);
           } else {
-            alert("Empty");
+            let gameContainer = document.querySelector(".game-container");
+            let endGame = document.querySelector(".game-end");
+            gameContainer.style.display = "none";
+            endGame.style.display = "flex";
           }
         });
   }
@@ -46,6 +49,11 @@ const GamePage = () => {
       selectBlock.style.display = "flex";
     }
     answer.style.display = "flex";
+  };
+
+  const backToMainButton = (event) => {
+    event.preventDefault();
+    window.location.href = "/";
   };
 
   return (
@@ -68,12 +76,24 @@ const GamePage = () => {
             <div className="game-show-answer-button">Show answer</div>
           </div>
           <div className="game-button-select-container">
-            <div className="game-positive-button" data-id={currentCard.id} onClick={(event) => {markCard(event, true)}}>
+            <div className="game-positive-button" data-id={currentCard.id} onClick={(event) => {
+              markCard(event, true)
+            }}>
               <div className="game-positive-button-text" data-id={currentCard.id}>Easy</div>
             </div>
-            <div className="game-negative-button" data-id={currentCard.id} onClick={(event) => {markCard(event, false)}}>
+            <div className="game-negative-button" data-id={currentCard.id} onClick={(event) => {
+              markCard(event, false)
+            }}>
               <div className="game-negative-button-text" data-id={currentCard.id}>Hard</div>
             </div>
+          </div>
+        </div>
+        <div className="game-end">
+          <div className="endgame-message">
+            <div className="endgame-text"> No more cards, you have finished this deck!</div>
+          </div>
+          <div className="back-to-main-button" onClick={backToMainButton}>
+            <div className="back-to-main-button-text">Back to main</div>
           </div>
         </div>
       </div>
