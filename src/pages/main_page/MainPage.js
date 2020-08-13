@@ -16,6 +16,12 @@ const MainPage = () => {
     ])
     console.log(decks);
 
+    const startGame = (event) => {
+        //event.preventDefault();
+        let currentDeckId = event.target.dataset.id;
+        console.log(event.target.dataset.id);
+    };
+
     if (localStorage.getItem("username")) {
         return (
             <div>
@@ -35,8 +41,8 @@ const MainPage = () => {
                                     <img src={"/deck.png"} className="deck-image" alt="Deck"/>
                                 </div>
                                 <div className="deck-play-button">
-                                    <Link to="/game" className="play-link">
-                                        <div className="play-button">Study</div>
+                                    <Link to="/game" className="play-link" data-id={deck.id} onClick={startGame}>
+                                        <div className="play-button" data-id={deck.id}>Study</div>
                                     </Link>
                                 </div>
                                 <div className="deck-button-container">
