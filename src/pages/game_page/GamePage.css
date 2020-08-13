@@ -44,7 +44,7 @@
 
 .game-answer {
     height: 20%;
-    display: flex;
+    display: none;
 }
 
 .game-answer-text {
@@ -78,7 +78,7 @@
     background-color: #6b88ad;
     border-radius: 8px;
     margin-top: 20px;
-    display: flex;
+    display: none;
     flex-direction: row;
     align-content: center;
     justify-content: space-evenly;

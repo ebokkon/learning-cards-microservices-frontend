@@ -13,6 +13,44 @@ const GamePage = () => {
 
   console.log(currentCard);
 
+  const markAsEasy = (event) => {
+    // True
+    event.preventDefault();
+    console.log(event.target)
+    console.log(event.target.dataset.id)
+    setCurrentCard({
+      "id": 3,
+      "question": "London",
+      "answer": "England"
+    });
+  };
+
+  const markAsHard = (event) => {
+    event.preventDefault();
+    console.log(event.target)
+    console.log(event.target.dataset.id)
+    setCurrentCard({
+      "id": 2,
+      "question": "London",
+      "answer": "England"
+    });
+
+  };
+
+  const showAnswer = (event) => {
+    event.preventDefault();
+    let answer = document.querySelector(".game-answer")
+    let selectBlock = document.querySelector(".game-button-select-container");
+    if (event.target.classList.contains("game-button-container")) {
+      event.target.style.display = "none";
+      selectBlock.style.display = "flex";
+    } else if (event.target.classList.contains("game-show-answer-button")) {
+      event.target.parentElement.style.display = "none";
+      selectBlock.style.display = "flex";
+    }
+    answer.style.display = "flex";
+  };
+
   return (
       <div className="game-page">
         <h2>Game page</h2>
@@ -29,15 +67,15 @@ const GamePage = () => {
               <p className="game-answer-text">{currentCard.answer}</p>
             </div>
           </div>
-          <div className="game-button-container">
+          <div className="game-button-container" onClick={showAnswer}>
             <div className="game-show-answer-button">Show answer</div>
           </div>
           <div className="game-button-select-container">
-              <div className="game-positive-button">
-                <div className="game-positive-button-text">Easy</div>
+              <div className="game-positive-button" data-id={currentCard.id} onClick={markAsEasy}>
+                <div className="game-positive-button-text" data-id={currentCard.id}>Easy</div>
               </div>
-              <div className="game-negative-button">
-                <div className="game-negative-button-text">Hard</div>
+              <div className="game-negative-button" data-id={currentCard.id} onClick={markAsHard}>
+                <div className="game-negative-button-text" data-id={currentCard.id}>Hard</div>
               </div>
           </div>
         </div>
