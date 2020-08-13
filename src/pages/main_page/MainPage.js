@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const MainPage = () => {
-    localStorage.setItem("username", "test user")
-    //localStorage.clear();
-    console.log(localStorage.getItem("username"));
 
   const [decks, setDecks] = useState([]);
 
