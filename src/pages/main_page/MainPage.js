@@ -18,6 +18,15 @@ const MainPage = () => {
     });
   }, []);
 
+  function DeleteDeck() {
+    //TODO connect with id
+    axios
+      .delete(`http://localhost:8762/deck-handler/deck/${id}`)
+      .then((res) => {
+        console.log(res.data);
+      });
+  }
+
   console.log(decks);
 
   if (decks) {
@@ -50,7 +59,7 @@ const MainPage = () => {
                   >
                     <div className="deck-button-text">Cards</div>
                   </Link>
-                  <div className="delete-deck-button">
+                  <div className="delete-deck-button" onClick={DeleteDeck}>
                     <div className="deck-button-text">Delete</div>
                   </div>
                 </div>
