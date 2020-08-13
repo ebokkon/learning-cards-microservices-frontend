@@ -12,7 +12,11 @@ function App() {
     <div className="App">
       <Router>
         {/* TODO: Need to implement a better header! */}
-        <h1>Study Cards Application</h1>
+        <div className="header-style">
+          <div className="header-text">
+            Study Cards Application
+          </div>
+        </div>
         {/* TODO: Need to fix routes! */}
         <Route exact path="/" children={<MainPage />}></Route>
         <Route exact path="/register" children={<Registration />}></Route>
