@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const MainPage = () => {
-    localStorage.setItem("username", "test user")
+    localStorage.setItem("username", "I_w@nt_to_LE@rn")
     //localStorage.clear();
     console.log(localStorage.getItem("username"));
 
@@ -50,8 +50,10 @@ const MainPage = () => {
   if (localStorage.getItem("username")) {
     return (
       <div>
-        <h2>Main page</h2>
-        <p>{`Welcome ${localStorage.getItem("username")}`}</p>
+        <div className="main-page-top">
+          <p className="welcome-user">{`Welcome, `}<span className="user-name">{`${localStorage.getItem("username")}`}</span>{`!`}</p>
+        </div>
+        <div className="decks-text">Your decks:</div>
         <section className="deck-cards">
           {decks.map((deck) => {
             return (

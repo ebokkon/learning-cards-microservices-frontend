@@ -1,3 +1,33 @@
+.main-page-top {
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.welcome-user {
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+}
+
+.decks-text {
+    margin: 30px 500px;
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #6b88ad;
+    color: #E6E6E6;
+    border-radius: 8px;
+
+
+}
+
+.user-name {
+    color: crimson;
+    font-weight: bold;
+}
+
 .deck-cards {
     display: flex;
     flex-wrap: wrap;
