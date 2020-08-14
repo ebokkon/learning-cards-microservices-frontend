@@ -18,18 +18,12 @@ function App() {
             Study Cards Application
           </div>
         </div>
-        {/* TODO: Need to fix routes! */}
-        <Route exact path="/" children={<MainPage />}></Route>
-        <Route exact path="auth/register" children={<Registration />}></Route>
-        <Route exact path="auth/login" children={<Login />}></Route>
+        <Route exact path="/" children={<MainPage/>}/>
+        <Route exact path="/auth/register" children={<Registration/>}/>
+        <Route exact path="/auth/login" children={<Login/>}/>
         <Route exact path="/auth/logout" children={<Logout/>}/>
-        <Route
-          exact
-          path="/deck/:id"
-          component={DeckDetailPage}
-          //children={<DeckDetailPage/>}
-        ></Route>
-        <Route exact path="/game" children={<GamePage />}></Route>
+        <Route exact path="/deck/:id" children={<DeckDetailPage/>}/>
+        <Route exact path="/game" children={<GamePage/>}/>
       </Router>
     </div>
   );
