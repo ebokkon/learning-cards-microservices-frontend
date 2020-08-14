@@ -16,6 +16,8 @@ const Registration = () => {
             redirect();
         } else {
             setMessage(response.data.msg);
+            // TODO: Need to handle this, display the error message on page too.
+            console.log(message);
         }
     };
 
