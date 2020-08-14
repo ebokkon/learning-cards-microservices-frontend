@@ -3,10 +3,8 @@ import "./DeckDetailPage.css";
 import axios from "axios";
 
 const DeckDetailPage = (props) => {
-  // TODO: Need to delete by dataset! From DB!
 
   const deckId = props.match.params.id;
-
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -16,8 +14,6 @@ const DeckDetailPage = (props) => {
         setCards(res.data);
       });
   }, []);
-
-  console.log(cards);
 
   const showAnswer = (event) => {
     event.preventDefault();
@@ -33,55 +29,71 @@ const DeckDetailPage = (props) => {
   const removeCard = (event) => {
     event.preventDefault();
     let currentCard = event.target.parentElement.parentElement;
-    console.log(currentCard);
-    console.log(currentCard.dataset.id);
 
     axios
       .delete(
         `http://localhost:8762/deck-handler/card/${deckId}/${currentCard.dataset.id}`
       )
       .then((res) => {
+        // TODO: Report card is successfully deleted or something.
         console.log(res.data);
       });
     currentCard.remove();
   };
 
+  const backToMain = (event) => {
+    event.preventDefault();
+    window.location.href = "/";
+
+  };
+
+  const showCards = () => {
+    if (cards.length === 0) {
+      return <div className="empty-deck-text">This deck is empty!</div>;
+    } else {
+      return (
+          <section className="deck-details-cards">
+            {cards.map((card) => {
+              return (
+                  <div
+                      key={card.id}
+                      className="detail-card-element"
+                      data-id={card.id}
+                  >
+                    <div className="card-image-container">
+                      <img className="card-image" src={"/card_default.png"} alt="" />
+                    </div>
+                    <div className="card-question">
+                      <p className="card-title-text">Question</p>
+                      <p className="card-question-text">{card.question}</p>
+                    </div>
+                    <div className="card-answer">
+                      <div className="show-answer-button" onClick={showAnswer}>
+                        <p className="show-answer-text">Show answer</p>
+                      </div>
+                      <p className="card-answer-text">{card.answer}</p>
+                    </div>
+                    <div className="card-button-container">
+                      <img
+                          src={"/delete_button.png"}
+                          alt="Delete card"
+                          className="card-delete-button"
+                          onClick={removeCard}
+                      />
+                    </div>
+                  </div>
+              );
+            })}
+          </section>
+      );
+    }
+  };
+
   return (
     <div>
-      <h2>Deck detail page</h2>
-      <section className="deck-details-cards">
-        {cards.map((card) => {
-          return (
-            <div
-              key={card.id}
-              className="detail-card-element"
-              data-id={card.id}
-            >
-              <div className="card-image-container">
-                <img className="card-image" src={"/card_default.png"} alt="" />
-              </div>
-              <div className="card-question">
-                <p className="card-title-text">Question</p>
-                <p className="card-question-text">{card.question}</p>
-              </div>
-              <div className="card-answer">
-                <div className="show-answer-button" onClick={showAnswer}>
-                  <p className="show-answer-text">Show answer</p>
-                </div>
-                <p className="card-answer-text">{card.answer}</p>
-              </div>
-              <div className="card-button-container">
-                <img
-                  src={"/delete_button.png"}
-                  alt="Delete card"
-                  className="card-delete-button"
-                  onClick={removeCard}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </section>
+      <div className="back-button-deck" onClick={backToMain}>Back</div>
+      <div className="decks-text">Cards in your deck:</div>
+      {showCards()}
     </div>
   );
 };
