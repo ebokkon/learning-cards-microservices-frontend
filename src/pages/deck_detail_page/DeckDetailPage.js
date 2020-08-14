@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./DeckDetailPage.css";
 import axios from "axios";
 
-const DeckDetailPage = (props) => {
+const DeckDetailPage = () => {
+  const getIdFromUrl = () =>{
+    let urlFragments = window.location.href.split("/");
+    return urlFragments[urlFragments.length - 1];
+  }
 
-  const deckId = props.match.params.id;
+  const deckId = getIdFromUrl();
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
