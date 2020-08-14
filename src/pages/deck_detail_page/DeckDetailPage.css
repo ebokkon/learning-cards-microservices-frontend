@@ -5,11 +5,31 @@
     justify-content: space-evenly;
 }
 
+.back-button-deck {
+    margin: 30px auto;
+    width: 100px;
+    padding: 20px;
+    text-align: center;
+    background-color: #29313d;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.empty-deck-text {
+    margin: 30px auto;
+    width: 400px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+}
+
 .detail-card-element {
     margin: 20px;
     height: 350px;
     width: 300px;
-    background-color: #313E4D;
+    background-color: #1368CE;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -34,7 +54,7 @@
 }
 
 .card-question {
-    background-color: #3e526d;
+    background-color: #461890;
     height: 65px;
     display: flex;
     align-content: center;
@@ -73,20 +93,21 @@
     justify-content: center;
     width: 50%;
     height: 60%;
-    background-color: #3e526d;
+    background-color: #66BF38;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .show-answer-text {
     margin: auto;
-    color: #b9c2b9;
+    color: white;
     font-weight: bold;
 }
 
 .card-answer-text {
     text-align: center;
     display: none;
-    color: #50b850;
+    color: white;
     font-weight: bold;
 }
 
@@ -101,4 +122,5 @@
     margin: auto;
     height: 50px;
     width: 50px;
+    cursor: pointer;
 }
