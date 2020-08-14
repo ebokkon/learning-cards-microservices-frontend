@@ -58,8 +58,6 @@ const GamePage = () => {
 
   return (
       <div className="game-page">
-        <h2>Game page</h2>
-
         <div className="game-container">
           <div className="current-card">
             <div className="game-picture-container">
