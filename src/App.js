@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import "./App.css";
 import Login from "./pages/authentication_pages/Login";
 import Registration from "./pages/authentication_pages/Registration";
+import Logout from "./pages/authentication_pages/Logout";
 import MainPage from "./pages/main_page/MainPage";
 import DeckDetailPage from "./pages/deck_detail_page/DeckDetailPage";
 import GamePage from "./pages/game_page/GamePage";
@@ -19,8 +20,9 @@ function App() {
         </div>
         {/* TODO: Need to fix routes! */}
         <Route exact path="/" children={<MainPage />}></Route>
-        <Route exact path="/register" children={<Registration />}></Route>
-        <Route exact path="/login" children={<Login />}></Route>
+        <Route exact path="auth/register" children={<Registration />}></Route>
+        <Route exact path="auth/login" children={<Login />}></Route>
+        <Route exact path="/auth/logout" children={<Logout/>}/>
         <Route
           exact
           path="/deck/:id"
