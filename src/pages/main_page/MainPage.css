@@ -1,7 +1,9 @@
 .main-page-top {
     margin: 50px auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 }
 
 .welcome-user {
@@ -10,8 +12,18 @@
     font-size: 30px;
 }
 
+.logout-button {
+    margin: 20px auto;
+    background-color: #29313d;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .decks-text {
-    margin: 30px 500px;
+    margin: 20px 500px;
     text-align: center;
     font-size: 20px;
     text-transform: uppercase;

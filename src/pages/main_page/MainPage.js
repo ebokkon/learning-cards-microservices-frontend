@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import "./MainPage.css";
 import Login from "../authentication_pages/Login";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 const MainPage = () => {
@@ -19,22 +19,22 @@ const MainPage = () => {
     let currentId = event.target.dataset.id;
     event.persist();
     axios
-      .delete(`http://localhost:8762/deck-handler/deck/${currentId}`)
-      .then((res) => {
-        if (event.target.classList.contains("deck-button-text")) {
-          event.target.parentElement.parentElement.parentElement.style.display =
-            "none";
-        } else {
-          event.target.parentElement.parentElement.style.display = "none";
-        }
-      });
+        .delete(`http://localhost:8762/deck-handler/deck/${currentId}`)
+        .then((res) => {
+          if (event.target.classList.contains("deck-button-text")) {
+            event.target.parentElement.parentElement.parentElement.style.display =
+                "none";
+          } else {
+            event.target.parentElement.parentElement.style.display = "none";
+          }
+        });
   };
 
-    const startGame = (event) => {
-        event.preventDefault();
-        let currentDeckId = event.target.dataset.id;
-        axios.post(`http://localhost:8762/game/play/${currentDeckId}`)
-            .then(res => {
+  const startGame = (event) => {
+    event.preventDefault();
+    let currentDeckId = event.target.dataset.id;
+    axios.post(`http://localhost:8762/game/play/${currentDeckId}`)
+        .then(res => {
               if (res.data === true) {
                 window.location.href = "/game";
               } else {
@@ -42,58 +42,65 @@ const MainPage = () => {
               }
             }
         )
-    };
+  };
+
+  const logoutUser = (event) => {
+    event.preventDefault();
+    window.location.href = "/auth/logout";
+  };
 
   if (localStorage.getItem("username")) {
     return (
-      <div>
-        <div className="main-page-top">
-          <p className="welcome-user">{`Welcome, `}<span className="user-name">{`${localStorage.getItem("username")}`}</span>{`!`}</p>
-        </div>
-        <div className="decks-text">Your decks:</div>
-        <section className="deck-cards">
-          {decks.map((deck) => {
-            return (
-              <div key={deck.id} className="deck-card-element">
-                <div className="deck-title">
-                  <p className="deck-text">{deck.name}</p>
-                </div>
-                <div className="deck-description">
-                  <p className="deck-text">{deck.description}</p>
-                </div>
-                <div className="deck-image-container">
-                  <img src={"/deck.png"} className="deck-image" alt="Deck" />
-                </div>
-                <div className="deck-play-button">
-                  <Link to="/game" className="play-link" data-id={deck.id} onClick={startGame}>
-                    <div className="play-button" data-id={deck.id}>Study</div>
-                  </Link>
-                </div>
-                <div className="deck-button-container">
-                  <Link
-                    to={`/deck/${deck.id}`}
-                    className="decks-cards-button-link"
-                  >
-                    <div className="deck-button-text">Cards</div>
-                  </Link>
-                  <div
-                    className="delete-deck-button"
-                    data-id={deck.id}
-                    onClick={deleteDeck}
-                  >
-                    <div className="deck-button-text" data-id={deck.id}>
-                      Delete
+        <div>
+          <div className="main-page-top">
+            <p className="welcome-user">{`Welcome, `}<span
+                className="user-name">{`${localStorage.getItem("username")}`}</span>{`!`}</p>
+            <div className="logout-button" onClick={logoutUser}>Logout</div>
+          </div>
+          <div className="decks-text">Your decks:</div>
+          <section className="deck-cards">
+            {decks.map((deck) => {
+              return (
+                  <div key={deck.id} className="deck-card-element">
+                    <div className="deck-title">
+                      <p className="deck-text">{deck.name}</p>
+                    </div>
+                    <div className="deck-description">
+                      <p className="deck-text">{deck.description}</p>
+                    </div>
+                    <div className="deck-image-container">
+                      <img src={"/deck.png"} className="deck-image" alt="Deck"/>
+                    </div>
+                    <div className="deck-play-button">
+                      <Link to="/game" className="play-link" data-id={deck.id} onClick={startGame}>
+                        <div className="play-button" data-id={deck.id}>Study</div>
+                      </Link>
+                    </div>
+                    <div className="deck-button-container">
+                      <Link
+                          to={`/deck/${deck.id}`}
+                          className="decks-cards-button-link"
+                      >
+                        <div className="deck-button-text">Cards</div>
+                      </Link>
+                      <div
+                          className="delete-deck-button"
+                          data-id={deck.id}
+                          onClick={deleteDeck}
+                      >
+                        <div className="deck-button-text" data-id={deck.id}>
+                          Delete
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </section>
-      </div>
+              );
+            })}
+          </section>
+        </div>
     );
   } else {
-    return <Login />;
+    return <Login/>;
   }
 };
 
